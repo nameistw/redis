@@ -33,8 +33,11 @@
 #include <stdint.h>
 
 typedef struct intset {
+    //数组元素类型
     uint32_t encoding;
+    //数组长度
     uint32_t length;
+    //保存元素的数组, 虽然定义为 int8_t, 但是实际元素类型取决于 encoding
     int8_t contents[];
 } intset;
 

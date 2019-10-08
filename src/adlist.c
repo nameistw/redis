@@ -36,7 +36,7 @@
 /* Create a new list. The created list can be freed with
  * AlFreeList(), but private value of every node need to be freed
  * by the user before to call AlFreeList().
- *
+ * 新建链表
  * On error, NULL is returned. Otherwise the pointer to the new list. */
 list *listCreate(void)
 {
@@ -53,6 +53,7 @@ list *listCreate(void)
 }
 
 /* Remove all the elements from the list without destroying the list itself. */
+//清空链表
 void listEmpty(list *list)
 {
     unsigned long len;
@@ -85,6 +86,8 @@ void listRelease(list *list)
  * On error, NULL is returned and no operation is performed (i.e. the
  * list remains unaltered).
  * On success the 'list' pointer you pass to the function is returned. */
+
+//头插法
 list *listAddNodeHead(list *list, void *value)
 {
     listNode *node;
@@ -97,10 +100,10 @@ list *listAddNodeHead(list *list, void *value)
         node->prev = node->next = NULL;
     } else {
         node->prev = NULL;
-        node->next = list->head;
-        list->head->prev = node;
-        list->head = node;
-    }
+    node->next = list->head;
+    list->head->prev = node;
+    list->head = node;
+}
     list->len++;
     return list;
 }
@@ -164,15 +167,18 @@ list *listInsertNode(list *list, listNode *old_node, void *value, int after) {
  * It's up to the caller to free the private value of the node.
  *
  * This function can't fail. */
+//节点删除
 void listDelNode(list *list, listNode *node)
 {
     if (node->prev)
         node->prev->next = node->next;
     else
+        //node 为头结点
         list->head = node->next;
     if (node->next)
         node->next->prev = node->prev;
     else
+        //node 为尾结点
         list->tail = node->prev;
     if (list->free) list->free(node->value);
     zfree(node);

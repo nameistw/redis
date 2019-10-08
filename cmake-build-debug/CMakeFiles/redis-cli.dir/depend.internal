@@ -37,6 +37,7 @@ CMakeFiles/redis-cli.dir/src/redis-cli.c.o
 CMakeFiles/redis-cli.dir/src/release.c.o
  /Users/klook/work/redis/src/crc64.h
  /Users/klook/work/redis/src/release.c
+ /Users/klook/work/redis/src/release.h
  /Users/klook/work/redis/src/version.h
 CMakeFiles/redis-cli.dir/src/sds.c.o
  /Users/klook/work/redis/src/sds.c

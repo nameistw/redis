@@ -44,6 +44,7 @@
 /* Unused arguments generate annoying warnings... */
 #define DICT_NOTUSED(V) ((void) V)
 
+//hash 表节点
 typedef struct dictEntry {
     void *key;
     union {
@@ -52,32 +53,53 @@ typedef struct dictEntry {
         int64_t s64;
         double d;
     } v;
+    //用于解决 hash 冲突
     struct dictEntry *next;
 } dictEntry;
 
+
+//一组操作不同数据类型的函数
 typedef struct dictType {
+    //hash 函数
     uint64_t (*hashFunction)(const void *key);
+    //key 复制函数
     void *(*keyDup)(void *privdata, const void *key);
+    //value 复制函数
     void *(*valDup)(void *privdata, const void *obj);
+    //key 比较函数
     int (*keyCompare)(void *privdata, const void *key1, const void *key2);
+    //key 销毁函数
     void (*keyDestructor)(void *privdata, void *key);
+    //val 销毁函数
     void (*valDestructor)(void *privdata, void *obj);
 } dictType;
 
 /* This is our hash table structure. Every dictionary has two of this as we
  * implement incremental rehashing, for the old to the new table. */
+//hash 表
 typedef struct dictht {
+    //数组, 每一个元素类型是 dictEntry
     dictEntry **table;
+    //数组大小
     unsigned long size;
+    //掩码 = size - 1
     unsigned long sizemask;
+    //已使用大小
     unsigned long used;
 } dictht;
 
+
+//字典
 typedef struct dict {
+    //类型，不同类型数据的操作函数
     dictType *type;
+    //私有数据
     void *privdata;
+    //hash 表，一般只使用 ht[0]，rehash 时才会用到 ht[1]
     dictht ht[2];
+    //用于记录重新 hash 的进度
     long rehashidx; /* rehashing not in progress if rehashidx == -1 */
+    //迭代器数量
     unsigned long iterators; /* number of iterators currently running */
 } dict;
 
@@ -85,9 +107,13 @@ typedef struct dict {
  * dictAdd, dictFind, and other functions against the dictionary even while
  * iterating. Otherwise it is a non safe iterator, and only dictNext()
  * should be called while iterating. */
+//字典迭代器
 typedef struct dictIterator {
     dict *d;
+    //hash 表数组下标
     long index;
+    //table 指向 ht[0] 或者 ht[1], 在 rehash 时，会继续遍历 ht[1]
+    //safe: 是否安全
     int table, safe;
     dictEntry *entry, *nextEntry;
     /* unsafe iterator fingerprint for misuse detection. */

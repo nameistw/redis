@@ -36,6 +36,7 @@ CMakeFiles/redis-cli.dir/src/redis-cli.c.o: ../src/zmalloc.h
 
 CMakeFiles/redis-cli.dir/src/release.c.o: ../src/crc64.h
 CMakeFiles/redis-cli.dir/src/release.c.o: ../src/release.c
+CMakeFiles/redis-cli.dir/src/release.c.o: ../src/release.h
 CMakeFiles/redis-cli.dir/src/release.c.o: ../src/version.h
 
 CMakeFiles/redis-cli.dir/src/sds.c.o: ../src/sds.c
