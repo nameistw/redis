@@ -68,8 +68,8 @@ CMAKE_BINARY_DIR = /Users/klook/work/redis/cmake-build-debug
 # Target rules for target CMakeFiles/redis-cli.dir
 
 # All Build rule for target.
-CMakeFiles/redis-cli.dir/all: deps/hiredis/CMakeFiles/hiredis.dir/all
 CMakeFiles/redis-cli.dir/all: deps/linenoise/CMakeFiles/linenoise.dir/all
+CMakeFiles/redis-cli.dir/all: deps/hiredis/CMakeFiles/hiredis.dir/all
 	$(MAKE) -f CMakeFiles/redis-cli.dir/build.make CMakeFiles/redis-cli.dir/depend
 	$(MAKE) -f CMakeFiles/redis-cli.dir/build.make CMakeFiles/redis-cli.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/klook/work/redis/cmake-build-debug/CMakeFiles --progress-num=39,40,41,42,43,44 "Built target redis-cli"
@@ -106,9 +106,9 @@ clean: CMakeFiles/redis-cli.dir/clean
 # Target rules for target CMakeFiles/redis-server.dir
 
 # All Build rule for target.
-CMakeFiles/redis-server.dir/all: deps/hiredis/CMakeFiles/hiredis.dir/all
 CMakeFiles/redis-server.dir/all: deps/linenoise/CMakeFiles/linenoise.dir/all
 CMakeFiles/redis-server.dir/all: deps/lua/CMakeFiles/lua.dir/all
+CMakeFiles/redis-server.dir/all: deps/hiredis/CMakeFiles/hiredis.dir/all
 	$(MAKE) -f CMakeFiles/redis-server.dir/build.make CMakeFiles/redis-server.dir/depend
 	$(MAKE) -f CMakeFiles/redis-server.dir/build.make CMakeFiles/redis-server.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/klook/work/redis/cmake-build-debug/CMakeFiles --progress-num=45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98 "Built target redis-server"

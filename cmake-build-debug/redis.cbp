@@ -866,6 +866,10 @@
 			<Option target="redis-cli"/>
 			<Option target="redis-server"/>
 		</Unit>
+		<Unit filename="/Users/klook/work/redis/src/release.h">
+			<Option target="redis-cli"/>
+			<Option target="redis-server"/>
+		</Unit>
 		<Unit filename="/Users/klook/work/redis/src/replication.c">
 			<Option target="redis-server"/>
 		</Unit>
